@@ -159,17 +159,6 @@ public:
             throw std::logic_error("There is no inverse matrix");
         }
         Matrix<T> a(n_, m_);
-//        if (n_ == 1) {
-//            Matrix<double> b(n_, m_);
-//            b = (a * (1/this->Det(n_)));
-//            return a;
-//        } else if (n_ == 2) {
-//            a.data_[0][0] = data_[1][1];
-//            a.data_[0][1] = -data_[0][1];
-//            a.data_[1][0] = -data_[1][0];
-//            a.data_[1][1] = data_[0][0];
-//            return (a * (1/this->Det(n_)));
-//        }
         Matrix<T> z = Transpose();
         for (size_t i = 0; i < n_; i++) {
             for (size_t j = 0; j < m_; j++) {
@@ -295,7 +284,5 @@ Matrix<T> operator*(Matrix<T> &a, Matrix<T> &b) {
     }
     return c;
 }
-
-
 
 #endif //MATRIX_MAT_HPP
