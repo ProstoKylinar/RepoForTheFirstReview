@@ -201,8 +201,38 @@ public:
             }
         }
         return true;
-
     }
+    
+    static Matrix<T>& zeroMatrix(size_t n) {
+        Matrix<T> M = new Matrix<T>;
+        M.n_ = n, M.m_ = n;
+        for (size_t i = 0; i < M.n_; ++i) {
+            std::vector<T> a;
+            for (size_t j = 0; j < M.m_; ++j) {
+                a.push_back(0);
+            }
+            M.data_.push_back(a);
+        }
+        return *M;
+    }
+
+    static Matrix<T>& unitMatrix(size_t n) {
+        Matrix<T> M = new Matrix<T>;
+        M.n_ = n, M.m_ = n;
+        for (size_t i = 0; i < M.n_; ++i) {
+            std::vector<T> a;
+            for (size_t j = 0; j < M.m_; ++j) {
+                if (i == j) {
+                    a.push_back(1);
+                } else {
+                    a.push_back(0);
+                }
+            }
+            M.data_.push_back(a);
+        }
+        return *M;
+    }
+    
     template<typename T1>
     friend std::ostream &operator<<(std::ostream &out, Matrix<T1> M);
 };
